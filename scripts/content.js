@@ -35,6 +35,12 @@ window.addEventListener(
     true
 );
 
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        run();
+    }, 1000);
+});
+
 // const { allowed } = await chrome.storage.sync.get({ allowed: [] });
 
 // const authorEl = [...document.getElementsByTagName("span")].find(

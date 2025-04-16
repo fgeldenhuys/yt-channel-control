@@ -3,7 +3,7 @@ let currentAuthorName = null;
 
 chrome.runtime.sendMessage({ request: "popup-loaded" }, function (response) {
     currentAuthorName = response.currentAuthorName;
-    document.getElementById("author-name").innerText = currentAuthorName ?? "";
+    document.getElementById("author-name").innerText = currentAuthorName ?? "NO CHANNEL!";
 });
 
 const enableEl = document.getElementById("enable");

@@ -5,23 +5,20 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     switch (message.request) {
         case "url-changed":
             currentAuthorName = message.authorName;
-            chrome.storage.sync.get(
-                { enabled: false, allowed: [] },
-                ({ enabled, allowed }) => {
-                    console.log(
-                        "enabled=",
-                        enabled,
-                        allowed,
-                        "includes",
-                        currentAuthorName,
-                        ":",
-                        allowed.includes(currentAuthorName)
-                    );
-                    sendResponse({
-                        allow: !enabled || allowed.includes(currentAuthorName),
-                    });
-                }
-            );
+            chrome.storage.sync.get({ enabled: false, allowed: [] }, ({ enabled, allowed }) => {
+                console.log(
+                    "enabled=",
+                    enabled,
+                    allowed,
+                    "includes",
+                    currentAuthorName,
+                    ":",
+                    allowed.includes(currentAuthorName)
+                );
+                sendResponse({
+                    allow: !enabled || allowed.includes(currentAuthorName),
+                });
+            });
             return true;
 
         case "popup-loaded":
